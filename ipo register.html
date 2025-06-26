@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register New IPO</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body style="font-family: 'Arial', sans-serif; background-color: #f5f6fa; color: #333; display: flex; min-height: 100vh; margin: 0; padding: 0; box-sizing: border-box;">
+    <div class="dashboard-container" style="display: flex; width: 100%;">
+        <!-- Sidebar -->
+        <aside class="sidebar" style="width: 250px; background-color: #ffffff; padding: 20px; box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05); display: flex; flex-direction: column; min-height: 100vh;">
+            <div class="sidebar-header" style="display: flex; align-items: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid #eee;">
+                <img src="https://via.placeholder.com/30" alt="Bluestock Logo" class="bluestock-logo" style="width: 30px; height: 30px; margin-right: 10px; border-radius: 4px;">
+                <span style="font-weight: bold; font-size: 1.1em; color: #4c4c4c;">Bluestock fintech</span>
+            </div>
+            <nav class="sidebar-nav">
+                <div class="menu-section">
+                    <h4 style="color: #999; font-size: 0.8em; margin-top: 20px; margin-bottom: 10px; padding-left: 10px; text-transform: uppercase;">MENU</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li class="nav-item" style="margin-bottom: 5px;">
+                            <a href="ipo_dashboard.html" style="display: flex; align-items: center; padding: 10px 15px; text-decoration: none; color: #555; border-radius: 5px; transition: background-color 0.2s ease, color 0.2s ease;"><i class="fas fa-home" style="margin-right: 10px; color: #888;"></i> Dashboard</a>
+                        </li>
+                        <li class="nav-item active" style="margin-bottom: 5px;">
+                            <a href="#" style="display: flex; align-items: center; padding: 10px 15px; text-decoration: none; border-radius: 5px; background-color: #e6e6fa; color: #6a0dad;"><i class="fas fa-chart-line" style="margin-right: 10px; color: #6a0dad;"></i> Manage IPO</a>
+                        </li>
+                        <li class="nav-item" style="margin-bottom: 5px;">
+                            <a href="#" style="display: flex; align-items: center; padding: 10px 15px; text-decoration: none; color: #555; border-radius: 5px;"><i class="fas fa-receipt" style="margin-right: 10px; color: #888;"></i> IPO Subscription</a>
+                        </li>
+                        <li class="nav-item" style="margin-bottom: 5px;">
+                            <a href="#" style="display: flex; align-items: center; padding: 10px 15px; text-decoration: none; color: #555; border-radius: 5px;"><i class="fas fa-file-invoice" style="margin-right: 10px; color: #888;"></i> IPO Allotment</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="others-section">
+                    <h4 style="color: #999; font-size: 0.8em; margin-top: 20px; margin-bottom: 10px; padding-left: 10px; text-transform: uppercase;">OTHERS</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li class="nav-item" style="margin-bottom: 5px;">
+                            <a href="#" style="display: flex; align-items: center; padding: 10px 15px; text-decoration: none; color: #555; border-radius: 5px;"><i class="fas fa-cogs" style="margin-right: 10px; color: #888;"></i> Settings</a>
+                        </li>
+                        <li class="nav-item" style="margin-bottom: 5px;">
+                            <a href="#" style="display: flex; align-items: center; padding: 10px 15px; text-decoration: none; color: #555; border-radius: 5px;"><i class="fas fa-puzzle-piece" style="margin-right: 10px; color: #888;"></i> API Manager</a>
+                        </li>
+                        <li class="nav-item" style="margin-bottom: 5px;">
+                            <a href="#" style="display: flex; align-items: center; padding: 10px 15px; text-decoration: none; color: #555; border-radius: 5px;"><i class="fas fa-users" style="margin-right: 10px; color: #888;"></i> Accounts</a>
+                        </li>
+                        <li class="nav-item" style="margin-bottom: 5px;">
+                            <a href="#" style="display: flex; align-items: center; padding: 10px 15px; text-decoration: none; color: #555; border-radius: 5px;"><i class="fas fa-question-circle" style="margin-right: 10px; color: #888;"></i> Help</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content" style="flex-grow: 1; padding: 0 20px 20px 20px;">
+            <!-- Header/Navbar -->
+            <header class="navbar" style="display: flex; justify-content: space-between; align-items: center; background-color: #ffffff; padding: 15px 20px; margin: 20px 0; border-radius: 8px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);">
+                <div class="search-bar" style="position: relative; width: 300px;">
+                    <input type="text" placeholder="Search..." style="width: 100%; padding: 10px 15px 10px 40px; border: 1px solid #ddd; border-radius: 20px; outline: none;">
+                    <i class="fas fa-search" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #999;"></i>
+                </div>
+                <div class="user-info" style="display: flex; align-items: center;">
+                    <i class="fas fa-envelope" style="margin-left: 20px; color: #777; cursor: pointer;"></i>
+                    <i class="fas fa-bell" style="margin-left: 20px; color: #777; cursor: pointer;"></i>
+                    <span class="user-avatar" style="width: 30px; height: 30px; border-radius: 50%; overflow: hidden; margin-left: 20px;">
+                        <img src="https://via.placeholder.com/30" alt="User Avatar" style="width: 100%; height: 100%; object-fit: cover;">
+                    </span>
+                    <span style="margin-left: 10px; font-weight: 500; color: #555;">Hi, Vishal</span>
+                    <i class="fas fa-chevron-down" style="margin-left: 10px; color: #777; cursor: pointer;"></i>
+                </div>
+            </header>
+
+            <!-- Register IPO Content -->
+            <section class="register-ipo-section" style="background-color: #ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);">
+                <h2 style="font-size: 1.5em; color: #333; margin-bottom: 25px;">Register New IPO</h2>
+
+                <div class="company-logo-section" style="display: flex; align-items: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid #eee;">
+                    <img id="companyLogoPreview" src="https://via.placeholder.com/80x80" alt="Company Logo" style="width: 80px; height: 80px; border-radius: 5px; object-fit: contain; border: 1px solid #ddd; margin-right: 20px;">
+                    <div style="display: flex; flex-direction: column;">
+                        <span id="companyNameDisplay" style="font-weight: bold; color: #333; font-size: 1.2em;">NSE India</span>
+                        <span id="companyDetailsDisplay" style="font-size: 0.85em; color: #777;">Tech's Lead Role</span>
+                        <input type="file" id="logoUploadInput" accept="image/*" style="display: none;">
+                        <button class="update-logo-btn" style="background-color: #e6e6fa; color: #6a0dad; padding: 8px 15px; border: 1px solid #6a0dad; border-radius: 5px; cursor: pointer; font-size: 0.9em; margin-top: 10px; width: fit-content;">Update Logo</button>
+                    </div>
+                </div>
+
+                <form id="ipoRegistrationForm" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="form-group" style="display: flex; flex-direction: column;">
+                        <label for="companyName" style="margin-bottom: 8px; font-weight: 600; color: #555;">Company Name <span style="color: red;">*</span></label>
+                        <input type="text" id="companyName" value="Vodafone Idea" style="padding: 10px 12px; border: 1px solid #ddd; border-radius: 5px; font-size: 1em; outline: none;">
+                    </div>
+
+                    <div class="form-group" style="display: flex; flex-direction: column;">
+                        <label for="priceBand" style="margin-bottom: 8px; font-weight: 600; color: #555;">Price Band</label>
+                        <input type="text" id="priceBand" value="₹ 129 - 136" style="padding: 10px 12px; border: 1px solid #ddd; border-radius: 5px; font-size: 1em; outline: none;">
+                    </div>
+
+                    <div class="form-group" style="display: flex; flex-direction: column;">
+                        <label for="openDate" style="margin-bottom: 8px; font-weight: 600; color: #555;">Open Date <span style="color: red;">*</span></label>
+                        <input type="date" id="openDate" value="2024-06-03" style="padding: 10px 12px; border: 1px solid #ddd; border-radius: 5px; font-size: 1em; outline: none;">
+                    </div>
+
+                    <div class="form-group" style="display: flex; flex-direction: column;">
+                        <label for="closeDate" style="margin-bottom: 8px; font-weight: 600; color: #555;">Close Date <span style="color: red;">*</span></label>
+                        <input type="date" id="closeDate" value="2024-06-05" style="padding: 10px 12px; border: 1px solid #ddd; border-radius: 5px; font-size: 1em; outline: none;">
+                    </div>
+
+                    <div class="form-group" style="display: flex; flex-direction: column;">
+                        <label for="issueSize" style="margin-bottom: 8px; font-weight: 600; color: #555;">Issue Size</label>
+                        <input type="text" id="issueSize" value="45530.15 Cr." style="padding: 10px 12px; border: 1px solid #ddd; border-radius: 5px; font-size: 1em; outline: none;">
+                    </div>
+
+                    <div class="form-group" style="display: flex; flex-direction: column;">
+                        <label for="issueType" style="margin-bottom: 8px; font-weight: 600; color: #555;">Issue Type</label>
+                        <select id="issueType" style="padding: 10px 12px; border: 1px solid #ddd; border-radius: 5px; font-size: 1em; outline: none; background-color: white; appearance: none; background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%20viewBox%3D%220%200%20292.4%20292.4%22%3E%3Cpath%20fill%3D%22%236a0dad%22%20d%3D%22M287%2C197.8L159.2%2C69.9c-5.3-5.3-13.8-5.3-19.1%2C0L5.4%2C197.8c-5.3%2C5.3-5.3%2C13.8%2C0%2C19.1s13.8%2C5.3%2C19.1%2C0l124.9-124.9l124.9%2C124.9c5.3%2C5.3%2C13.8%2C5.3%2C19.1%2C0S292.4%2C203.1%2C287%2C197.8z%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: right 10px center; background-size: 12px; cursor: pointer;">
+                            <option value="">Select Type</option>
+                            <option value="Book Built" selected>Book Built</option>
+                            <option value="Fresh Issue">Fresh Issue</option>
+                            <option value="Offer for Sale">Offer for Sale</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" style="display: flex; flex-direction: column;">
+                        <label for="listingDate" style="margin-bottom: 8px; font-weight: 600; color: #555;">Listing Date</label>
+                        <input type="date" id="listingDate" value="2024-06-10" style="padding: 10px 12px; border: 1px solid #ddd; border-radius: 5px; font-size: 1em; outline: none;">
+                    </div>
+
+                    <div class="form-group" style="display: flex; flex-direction: column;">
+                        <label for="status" style="margin-bottom: 8px; font-weight: 600; color: #555;">Status <span style="color: red;">*</span></label>
+                        <select id="status" style="padding: 10px 12px; border: 1px solid #ddd; border-radius: 5px; font-size: 1em; outline: none; background-color: white; appearance: none; background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%20viewBox%3D%220%200%20292.4%20292.4%22%3E%3Cpath%20fill%3D%22%236a0dad%22%20d%3D%22M287%2C197.8L159.2%2C69.9c-5.3-5.3-13.8-5.3-19.1%2C0L5.4%2C197.8c-5.3%2C5.3-5.3%2C13.8%2C0%2C19.1s13.8%2C5.3%2C19.1%2C0l124.9-124.9l124.9%2C124.9c5.3%2C5.3%2C13.8%2C5.3%2C19.1%2C0S292.4%2C203.1%2C287%2C197.8z%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: right 10px center; background-size: 12px; cursor: pointer;">
+                            <option value="">Select Status</option>
+                            <option value="Ongoing" selected>Ongoing</option>
+                            <option value="Comming">Comming</option>
+                            <option value="New Listed">New Listed</option>
+                            <option value="Not Issued">Not Issued</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" style="grid-column: 1 / span 2; display: flex; justify-content: flex-end; margin-top: 20px;">
+                        <button type="submit" id="registerIpoBtn" style="background-color: #6a0dad; color: white; padding: 12px 25px; border: none; border-radius: 5px; cursor: pointer; font-size: 1em; font-weight: bold; transition: background-color 0.3s ease;">Register IPO</button>
+                    </div>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('register_ipo.html: DOMContentLoaded - Script started.');
+
+            const companyNameInput = document.getElementById('companyName');
+            const priceBandInput = document.getElementById('priceBand');
+            const openDateInput = document.getElementById('openDate');
+            const closeDateInput = document.getElementById('closeDate');
+            const issueSizeInput = document.getElementById('issueSize');
+            const issueTypeSelect = document.getElementById('issueType');
+            const listingDateInput = document.getElementById('listingDate');
+            const statusSelect = document.getElementById('status');
+            const registerBtn = document.getElementById('registerIpoBtn');
+
+            const companyLogoPreview = document.getElementById('companyLogoPreview');
+            const logoUploadInput = document.getElementById('logoUploadInput');
+            const updateLogoBtn = document.querySelector('.update-logo-btn');
+
+            // --- Logo Upload Functionality ---
+            updateLogoBtn.addEventListener('click', () => {
+                console.log('register_ipo.html: Update Logo button clicked.');
+                logoUploadInput.click();
+            });
+
+            logoUploadInput.addEventListener('change', (event) => {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        companyLogoPreview.src = e.target.result;
+                        console.log('register_ipo.html: Logo preview updated. Image data URL:', e.target.result.substring(0, 50) + '...'); // Log first 50 chars
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    console.log('register_ipo.html: No file selected for logo upload.');
+                }
+            });
+
+            // --- Form Submission Logic ---
+            registerBtn.addEventListener('click', (event) => {
+                event.preventDefault(); // Prevent default form submission
+                console.log('register_ipo.html: Register button clicked. Initiating form submission logic.');
+
+                // Basic validation
+                if (!companyNameInput.value || !openDateInput.value || !closeDateInput.value || !statusSelect.value) {
+                    alert('Please fill in Company Name, Open Date, Close Date, and Status (required fields).');
+                    console.log('register_ipo.html: Validation failed. Required fields missing.');
+                    return;
+                }
+
+                // Retrieve existing IPOs from localStorage or initialize an empty array
+                // The key 'ipoData' is now consistent with the dashboard
+                let existingIpos = JSON.parse(localStorage.getItem('ipoData')) || [];
+                console.log('register_ipo.html: Existing IPOs from localStorage:', existingIpos);
+
+                // Generate a unique ID (simple increment, ideally use UUID in real app)
+                // Ensure new IDs don't conflict with existing default data IDs
+                const maxId = existingIpos.length > 0 ? Math.max(...existingIpos.map(ipo => ipo.id)) : 0;
+                const newId = maxId + 1;
+
+                const newIpo = {
+                    id: newId,
+                    company: companyNameInput.value,
+                    priceBand: priceBandInput.value,
+                    open: openDateInput.value,
+                    close: closeDateInput.value,
+                    issueSize: issueSizeInput.value,
+                    issueType: issueTypeSelect.value,
+                    listingDate: listingDateInput.value,
+                    status: statusSelect.value,
+                    logo: companyLogoPreview.src // Use the base64 data URL from the preview
+                };
+
+                console.log('register_ipo.html: New IPO object created:', newIpo);
+
+                existingIpos.push(newIpo);
+                console.log('register_ipo.html: Updated IPOs array before saving:', existingIpos);
+
+                try {
+                    localStorage.setItem('ipoData', JSON.stringify(existingIpos)); // Save to localStorage
+                    console.log('register_ipo.html: IPO data successfully saved to localStorage.');
+                } catch (e) {
+                    console.error('register_ipo.html: Error saving to localStorage:', e);
+                    alert('Error saving data. Storage might be full or blocked.');
+                }
+
+                alert('IPO registered successfully! Redirecting to dashboard...');
+                window.location.href = 'ipo_dashboard.html'; // Redirect to the dashboard
+                console.log('register_ipo.html: Redirecting to ipo_dashboard.html');
+            });
+        });
+    </script>
+</body>
+</html>
