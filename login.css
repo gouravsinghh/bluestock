@@ -1,0 +1,132 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f6fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .container {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+  }
+  
+  .logo {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #2d2e43;
+    margin-bottom: 2rem;
+  }
+  
+  .logo span {
+    color: #2d2e43;
+  }
+  
+  form label {
+    display: block;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  input[type="email"],
+  input[type="password"] {
+    width: 100%;
+    padding: 0.7rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+  
+  .password-container {
+    position: relative;
+  }
+  
+  .password-wrapper {
+    position: relative;
+  }
+  
+  .toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 35%;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .password-container a {
+    float: right;
+    font-size: 0.8rem;
+    text-decoration: none;
+    color: #6c63ff;
+  }
+  
+  .captcha {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .recaptcha {
+    margin-left: auto;
+    font-size: 0.7rem;
+    background: #eaeaea;
+    padding: 4px 8px;
+    border-radius: 4px;
+  }
+  
+  .keep-signed-in {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .login-btn {
+    width: 100%;
+    background: #6c63ff;
+    color: white;
+    border: none;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 1rem;
+  }
+  
+  .divider {
+    text-align: center;
+    color: #999;
+    font-size: 0.8rem;
+    margin: 1rem 0;
+  }
+  
+  .google-btn {
+    width: 100%;
+    background: #f1f1f1;
+    border: none;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .google-btn::before {
+    content: "🌐 ";
+    margin-right: 5px;
+  }
+  
+  .create-account {
+    display: block;
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #6c63ff;
+    text-decoration: none;
+  }
