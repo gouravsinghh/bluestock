@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upcoming IPO Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f5f6fa;
+            color: #333;
+            display: flex;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .dashboard-container {
+            display: flex;
+            width: 100%;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #ffffff;
+            padding: 20px;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            border-right: 1px solid #f0f0f0;
+        }
+
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .bluestock-logo {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+            border-radius: 4px;
+        }
+
+        .sidebar-header span {
+            font-weight: 600;
+            font-size: 1.1em;
+            color: #4c4c4c;
+        }
+
+        .sidebar-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu-section h4, .others-section h4 {
+            color: #999;
+            font-size: 0.75em;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            padding-left: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            font-weight: 600;
+        }
+
+        .nav-item {
+            margin-bottom: 5px;
+        }
+
+        .nav-item a {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            text-decoration: none;
+            color: #555;
+            border-radius: 8px;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .nav-item a i {
+            margin-right: 12px;
+            color: #888;
+            font-size: 0.95em;
+        }
+
+        .nav-item a:hover {
+            background-color: #f0f2f5;
+            color: #333;
+        }
+
+        .nav-item.active a {
+            background-color: #e0f2f7;
+            color: #007bff;
+            font-weight: 600;
+        }
+
+        .nav-item.active a i {
+            color: #007bff;
+        }
+
+
+        .main-content {
+            flex-grow: 1;
+            padding: 0 30px 30px 30px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #ffffff;
+            padding: 15px 25px;
+            margin: 25px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+        }
+
+        .search-bar {
+            position: relative;
+            width: 350px;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 10px 15px 10px 45px;
+            border: 1px solid #e0e0e0;
+            border-radius: 25px;
+            outline: none;
+            font-size: 0.95em;
+            color: #555;
+            background-color: #f8f9fa;
+        }
+
+        .search-bar i {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #a0a0a0;
+            font-size: 1.0em;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-info i {
+            margin-left: 25px;
+            color: #777;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: color 0.2s ease;
+        }
+
+        .user-info i:hover {
+            color: #007bff;
+        }
+
+        .user-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-left: 25px;
+            border: 2px solid #e0e0e0;
+        }
+
+        .user-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .user-info span {
+            margin-left: 12px;
+            font-weight: 500;
+            color: #555;
+            font-size: 0.95em;
+        }
+
+        .dashboard-section {
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .dashboard-header h2 {
+            font-size: 1.6em;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .register-ipo-btn {
+            background-color: #e9edf1;
+            color: rgb(68, 2, 249);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            display: flex;
+            align-items: center;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+            font-weight: 500;
+        }
+
+        .register-ipo-btn i {
+            margin-right: 8px;
+        }
+
+        .register-ipo-btn:hover {
+            background-color: #0056b3;
+            transform: translateY(-1px);
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 10px;
+            margin-top: 15px;
+        }
+
+        table thead tr {
+            background-color: #f8f9fa;
+            color: #777;
+            font-weight: 600;
+            text-align: left;
+        }
+
+        table th {
+            padding: 12px 15px;
+            white-space: nowrap;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        table tbody tr {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+            transition: transform 0.1s ease, box-shadow 0.1s ease;
+        }
+
+        table tbody tr:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        table td {
+            padding: 12px 15px;
+            white-space: nowrap;
+            font-size: 0.9em;
+            color: #555;
+            vertical-align: middle;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        table tbody tr td:first-child {
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
+        }
+
+        table tbody tr td:last-child {
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+
+
+        .status-badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.75em;
+            font-weight: 600;
+            color: white;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .update-btn {
+            background-color: #4c1ee3;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.85em;
+            margin-right: 5px;
+            transition: background-color 0.2s ease;
+            font-weight: 500;
+        }
+
+        .update-btn:hover {
+            background-color: #5a6268;
+        }
+
+        .delete-btn
+        {
+            color: #d62222;
+            font-size: 1.0em;
+            cursor: pointer;
+            margin: 0 5px;
+            transition: color 0.2s ease;
+        } 
+        .view-btn {
+            color: #777;
+            font-size: 1.0em;
+            cursor: pointer;
+            margin: 0 5px;
+            transition: color 0.2s ease;
+        }
+
+        .delete-btn:hover {
+            color: #dc3545;
+        }
+
+        .view-btn:hover {
+            color: #007bff;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-top: 25px;
+            padding: 15px 0;
+            border-top: 1px solid #eee;
+        }
+
+        .page-btn {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            margin: 0 4px;
+            transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+            color: #555;
+        }
+
+        .page-btn:hover:not(:disabled) {
+            background-color: #f0f0f0;
+            border-color: #ccc;
+        }
+
+        .page-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            background-color: #f8f8f8;
+        }
+
+        #pagination-numbers button {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            padding: 8px 14px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            margin: 0 4px;
+            transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+            color: #555;
+        }
+
+        #pagination-numbers button.active {
+            background-color: #007bff;
+            color: white;
+            border-color: #007bff;
+            font-weight: bold;
+        }
+
+        #pagination-numbers button:hover:not(.active) {
+            background-color: #f0f0f0;
+            border-color: #ccc;
+        }
+        
+        .page-ellipsis {
+            padding: 8px 12px;
+            color: #777;
+            margin: 0 4px;
+        }
+
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 30px;
+            border-radius: 12px;
+            width: 80%;
+            max-width: 650px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 32px;
+            font-weight: normal;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: #333;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .modal-logo {
+            width: 65px;
+            height: 65px;
+            object-fit: contain;
+            margin-right: 20px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+        }
+
+        .modal-header h3 {
+            font-size: 2em;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .modal-body {
+            padding-left: 15px;
+        }
+
+        .modal-body p {
+            margin-bottom: 12px;
+            font-size: 1.05em;
+        }
+
+        .modal-body strong {
+            color: #555;
+            display: inline-block;
+            width: 140px;
+            font-weight: 600;
+        }
+
+        .modal-body span {
+            color: #444;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="image\logo.jpeg" alt="Bluestock Logo" class="bluestock-logo">
+                <span>Bluestock fintech</span>
+            </div>
+            <nav class="sidebar-nav">
+                <div class="menu-section">
+                    <h4>MENU</h4>
+                    <ul>
+                        <li class="nav-item">
+                            <a href="#"><i class="fas fa-home"></i> Dashboard</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a href="#"><i class="fas fa-chart-line"></i> Manage IPO</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#"><i class="fas fa-receipt"></i> IPO Subscription</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="javascript:void(0)" onclick="event.preventDefault(); /* For now, just prevent default */"><i class="fas fa-file-invoice"></i> IPO Allotment</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="others-section">
+                    <h4>OTHERS</h4>
+                    <ul>
+                        <li class="nav-item">
+                            <a href="#"><i class="fas fa-cogs"></i> Settings</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#"><i class="fas fa-puzzle-piece"></i> API Manager</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#"><i class="fas fa-users"></i> Accounts</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#"><i class="fas fa-question-circle"></i> Help</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="navbar">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search...">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="user-info">
+                    <i class="fas fa-envelope"></i>
+                    <i class="fas fa-bell"></i>
+                    <span class="user-avatar">
+                        <img src="https://ts4.mm.bing.net/th?id=OIP.PKlD9uuBX0m4S8cViqXZHAHaHa&pid=15.1" alt="User Avatar">
+                    </span>
+                    <span>Hi, Vishal</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </header>
+
+            <section class="dashboard-section">
+                <div class="dashboard-header">
+                    <h2>Upcoming IPO | Dashboard</h2>
+                    <button class="register-ipo-btn"><i class="fas fa-plus"></i> Register IPO</button>
+                </div>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Company</th>
+                                <th>Price Band</th>
+                                <th>Open</th>
+                                <th>Close</th>
+                                <th>ISSUE SIZE</th>
+                                <th>ISSUE Type</th>
+                                <th>Listing Date</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                                <th>Delete/View</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ipo-table-body">
+                            <!-- IPO data will be rendered here by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="pagination">
+                    <button id="prev-page" class="page-btn"><i class="fas fa-chevron-left"></i></button>
+                    <div id="pagination-numbers">
+                        <!-- Pagination numbers will be rendered here by JavaScript -->
+                    </div>
+                    <button id="next-page" class="page-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="ipo-details-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div class="modal-header">
+                <img id="modal-company-logo" src="https://via.placeholder.co/60" alt="Company Logo" class="modal-logo">
+                <h3 id="modal-company-name"></h3>
+            </div>
+            <div class="modal-body">
+                <p><strong>Price Band:</strong> <span id="modal-price-band"></span></p>
+                <p><strong>Open Date:</strong> <span id="modal-open-date"></span></p>
+                <p><strong>Close Date:</strong> <span id="modal-close-date"></span></p>
+                <p><strong>Issue Size:</strong> <span id="modal-issue-size"></span></p>
+                <p><strong>Issue Type:</strong> <span id="modal-issue-type"></span></p>
+                <p><strong>Listing Date:</strong> <span id="modal-listing-date"></span></p>
+                <p><strong>Status:</strong> <span id="modal-status" class="status-badge"></span></p>
+            </div>
+        </div>
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const ipoTableBody = document.getElementById('ipo-table-body');
+    const paginationNumbers = document.getElementById('pagination-numbers');
+    const prevPageBtn = document.getElementById('prev-page');
+    const nextPageBtn = document.getElementById('next-page');
+    const registerIpoBtn = document.querySelector('.register-ipo-btn');
+    const modal = document.getElementById('ipo-details-modal');
+    const closeButton = document.querySelector('.modal .close-button');
+    const modalCompanyName = document.getElementById('modal-company-name');
+    const modalCompanyLogo = document.getElementById('modal-company-logo');
+    const modalPriceBand = document.getElementById('modal-price-band');
+    const modalOpenDate = document.getElementById('modal-open-date');
+    const modalCloseDate = document.getElementById('modal-close-date');
+    const modalIssueSize = document.getElementById('modal-issue-size');
+    const modalIssueType = document.getElementById('modal-issue-type');
+    const modalListingDate = document.getElementById('modal-listing-date');
+    const modalStatus = document.getElementById('modal-status');
+
+    const initialIpoData = [
+        { id: 1, company: 'Astani Power', priceBand: '7329-136', open: '2023-06-03', close: '2024-06-05', issueSize: '45530.15 Cr.', issueType: 'Book Built', listingDate: '2023-06-10', status: 'Ongoing', logo: 'https://placehold.co/60x60/FF5733/FFFFFF?text=AP' },
+        { id: 2, company: 'VBL LTD', priceBand: '229-136', open: '2004-06-03', close: '2024-06-05', issueSize: '1330.15 Cr.', issueType: 'Book Built', listingDate: '2018-06-10', status: 'Comming', logo: 'https://placehold.co/60x60/33FF57/FFFFFF?text=VB' },
+        { id: 3, company: 'Tata Motor', priceBand: '12549-136', open: '2024-06-03', close: '2024-06-05', issueSize: '1340.15 Cr.', issueType: 'Book Built', listingDate: '2016-06-10', status: 'New Listed', logo: 'https://placehold.co/60x60/3357FF/FFFFFF?text=TMdata:image/png;base64,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' },
+        { id: 4, company: 'HDFC LTD', priceBand: '1264-136', open: '2024-06-03', close: '2024-06-05', issueSize: '830.15 Cr.', issueType: 'Book Built', listingDate: '2029-06-11', status: 'Ongoing', logo: 'https://placehold.co/60x60/FF33CC/FFFFFF?text=HD' },
+        { id: 5, company: 'Tata Motor', priceBand: '629-136', open: '2024-06-01', close: '2024-06-05', issueSize: '820.15 Cr.', issueType: 'Book Built', listingDate: '2023-06-10', status: 'Ongoing', logo: 'https://placehold.co/60x60/33FF57/FFFFFF?text=TM' },
+        { id: 6, company: 'VBL LTD', priceBand: '629-136', open: '2024-06-03', close: '2024-06-05', issueSize: '151.15 Cr.', issueType: 'Book Built', listingDate: '2024-06-10', status: 'Comming', logo: 'https://placehold.co/60x60/FF5733/FFFFFF?text=VB' },
+        { id: 7, company: 'Tata Motor', priceBand: '6729-136', open: '2024-06-03', close: '2024-06-05', issueSize: '170.15 Cr.', issueType: 'Book Built', listingDate: '2027-06-10', status: 'New Listed', logo: 'https://placehold.co/60x60/3357FF/FFFFFF?text=TM' },
+        { id: 8, company: 'VBL LTD', priceBand: '1629-136', open: '2024-06-03', close: '2024-06-05', issueSize: '130.15 Cr.', issueType: 'Book Built', listingDate: '2022-06-10', status: 'Comming', logo: 'https://placehold.co/60x60/FF33CC/FFFFFF?text=VB' },
+        { id: 9, company: 'Tata Motor', priceBand: '2329-136', open: '2024-06-03', close: '2024-06-05', issueSize: '130.15 Cr.', issueType: 'Book Built', listingDate: '2023-06-10', status: 'New Listed', logo: 'https://placehold.co/60x60/33FF57/FFFFFF?text=TM' },
+        { id: 10, company: 'VBL LTD', priceBand: '4329-136', open: '2024-06-03', close: '2024-06-05', issueSize: '130.15 Cr.', issueType: 'Book Built', listingDate: '2021-06-10', status: 'Comming', logo: 'https://placehold.co/60x60/FF5733/FFFFFF?text=VB' },
+        { id: 11, company: 'Example Corp', priceBand: '500-600', open: '2024-07-01', close: '2024-07-05', issueSize: '100.00 Cr.', issueType: 'Fixed Price', listingDate: '2024-07-15', status: 'Ongoing', logo: 'https://placehold.co/60x60/33A0FF/FFFFFF?text=EX' }
+    ];
+
+    let ipoData = JSON.parse(localStorage.getItem('ipoData'));
+
+    console.log("Initial ipoData from localStorage:", ipoData);
+
+    if (!Array.isArray(ipoData) || ipoData.length === 0) {
+        console.log("LocalStorage is empty or invalid, populating with initial data.");
+        ipoData = initialIpoData;
+        localStorage.setItem('ipoData', JSON.stringify(ipoData));
+    } else {
+        console.log("LocalStorage already contains valid IPO data.");
+    }
+    console.log("Final ipoData before rendering:", ipoData);
+    
+    const rowsPerPage = 10;
+    let currentPage = 1;
+
+    function getStatusBadgeStyle(status) {
+        let color;
+        switch (status.toLowerCase()) {
+            case 'ongoing': color = '#8bc34a'; break;
+            case 'comming': color = '#ffc107'; break;
+            case 'new listed': color = '#2196f3'; break;
+            case 'not issued': color = '#999'; break;
+            default: color = '#999';
+        }
+        return `background-color: ${color};`;
+    }
+
+    function renderTable() {
+        console.log("Rendering table with data:", ipoData);
+        ipoTableBody.innerHTML = '';
+        const start = (currentPage - 1) * rowsPerPage;
+        const end = start + rowsPerPage;
+        const paginatedData = ipoData.slice(start, end);
+
+        if (paginatedData.length === 0) {
+            ipoTableBody.innerHTML = '<tr><td colspan="10" style="text-align:center;padding:20px;color:#777;">No IPOs to display.</td></tr>';
+            return;
+        }
+
+        paginatedData.forEach(ipo => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${ipo.company}</td>
+                <td>${ipo.priceBand}</td>
+                <td>${ipo.open}</td>
+                <td>${ipo.close}</td>
+                <td>${ipo.issueSize}</td>
+                <td>${ipo.issueType}</td>
+                <td>${ipo.listingDate}</td>
+                <td><span class="status-badge" style="${getStatusBadgeStyle(ipo.status)}">${ipo.status}</span></td>
+                <td><button class="update-btn" data-id="${ipo.id}">Update</button></td>
+                <td>
+                    <i class="fas fa-trash-alt delete-btn" data-id="${ipo.id}"></i>
+                    <i class="fas fa-eye view-btn" data-id="${ipo.id}"></i>
+                </td>`;
+            ipoTableBody.appendChild(row);
+        });
+        updatePagination();
+    }
+
+    function updatePagination() {
+        paginationNumbers.innerHTML = '';
+        const totalPages = Math.ceil(ipoData.length / rowsPerPage);
+
+        prevPageBtn.disabled = currentPage === 1;
+        nextPageBtn.disabled = currentPage === totalPages;
+
+        let pagesToShow = [];
+        if (totalPages <= 7) {
+            for (let i = 1; i <= totalPages; i++) {
+                pagesToShow.push(i);
+            }
+        } else {
+            if (currentPage <= 4) {
+                pagesToShow = [1, 2, 3, 4, 5, '...', totalPages];
+            } else if (currentPage > totalPages - 4) {
+                pagesToShow = [1, '...', totalPages - 4, totalPages - 3, totalPages - 2, totalPages - 1, totalPages];
+            } else {
+                pagesToShow = [1, '...', currentPage - 1, currentPage, currentPage + 1, '...', totalPages];
+            }
+        }
+
+        pagesToShow.forEach(page => {
+            if (page === '...') {
+                const span = document.createElement('span');
+                span.textContent = '...';
+                span.classList.add('page-ellipsis');
+                paginationNumbers.appendChild(span);
+            } else {
+                const btn = document.createElement('button');
+                btn.textContent = page;
+                btn.classList.add('page-btn');
+                if (page === currentPage) {
+                    btn.classList.add('active');
+                }
+                btn.addEventListener('click', () => {
+                    currentPage = parseInt(page);
+                    renderTable();
+                });
+                paginationNumbers.appendChild(btn);
+            }
+        });
+    }
+
+    prevPageBtn.addEventListener('click', () => {
+        if (currentPage > 1) { currentPage--; renderTable(); }
+    });
+    nextPageBtn.addEventListener('click', () => {
+        const totalPages = Math.ceil(ipoData.length / rowsPerPage);
+        if (currentPage < totalPages) { currentPage++; renderTable(); }
+    });
+
+    ipoTableBody.addEventListener('click', (event) => {
+        const target = event.target;
+        const id = parseInt(target.dataset.id);
+        if (target.classList.contains('delete-btn')) {
+            ipoData = ipoData.filter(ipo => ipo.id !== id);
+            localStorage.setItem('ipoData', JSON.stringify(ipoData));
+            renderTable();
+        } else if (target.classList.contains('view-btn')) {
+            const ipo = ipoData.find(i => i.id === id);
+            if (ipo) {
+                modalCompanyName.textContent = ipo.company;
+                modalCompanyLogo.src = ipo.logo || "https://placehold.co/60x60";
+                modalPriceBand.textContent = ipo.priceBand;
+                modalOpenDate.textContent = ipo.open;
+                modalCloseDate.textContent = ipo.close;
+                modalIssueSize.textContent = ipo.issueSize;
+                modalIssueType.textContent = ipo.issueType;
+                modalListingDate.textContent = ipo.listingDate;
+                modalStatus.textContent = ipo.status;
+                modalStatus.className = 'status-badge';
+                modalStatus.style.cssText = getStatusBadgeStyle(ipo.status);
+                modal.style.display = 'flex';
+            }
+        }
+    });
+
+    closeButton.addEventListener('click', () => modal.style.display = 'none');
+    window.addEventListener('click', (event) => {
+        if (event.target === modal) modal.style.display = 'none';
+    });
+
+    registerIpoBtn.addEventListener('click', (event) => {
+        event.preventDefault(); // Ensure the default behavior is still prevented to avoid accidental form submission
+        window.location.href = 'register_ipo.html'; // Redirect to the register_ipo.html page
+    });
+
+    // Initial render
+    renderTable();
+});
+</script>
+
+</body>
+</html>
